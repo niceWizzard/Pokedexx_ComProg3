@@ -96,12 +96,13 @@ public class PokemonService {
 
     private static PokemonModel.Image parsePokemonImage(JSONObject jsonObj) {
         Optional<String> hires = Optional.empty();
+        var toReplace = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master";
         if(jsonObj.has("hires")) {
-            hires = Optional.of(jsonObj.getJSONObject("image").getString("hires"));
+            hires = Optional.of(jsonObj.getJSONObject("image").getString("hires").replace(toReplace, ""));
         }
         return new PokemonModel.Image(
-                jsonObj.getJSONObject("image").getString("sprite"),
-                jsonObj.getJSONObject("image").getString("thumbnail"),
+                jsonObj.getJSONObject("image").getString("sprite").replace(toReplace, ""),
+                jsonObj.getJSONObject("image").getString("thumbnail").replace(toReplace, ""),
                 hires
         );
     }

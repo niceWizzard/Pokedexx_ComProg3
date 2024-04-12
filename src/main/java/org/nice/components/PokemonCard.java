@@ -20,7 +20,7 @@ public class PokemonCard extends JPanel {
         var image = new ImageIcon(
                 Objects.requireNonNull(
                         getClass().getResource(
-                                model.image().thumbnail().replace("https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master", "")
+                                model.image().thumbnail()
                         )
                 )
         );
