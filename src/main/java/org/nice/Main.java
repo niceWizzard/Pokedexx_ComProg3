@@ -17,9 +17,10 @@ public class Main extends JFrame {
         root.add(new JLabel("Hello worrd"));
 
         setTitle("Pokedexx");
-        setMinimumSize(new Dimension(1080,720));
+        setMinimumSize(new Dimension(1080, 720));
         setLocationRelativeTo(null);
         setContentPane(root);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 }
