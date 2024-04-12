@@ -29,7 +29,6 @@ public class PokemonService {
 
     private PokemonService() {
         loadFromFile();
-        System.out.println(pokemonList.size());
     }
 
     private void loadFromFile() {
