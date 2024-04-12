@@ -2,7 +2,6 @@ package org.nice.components;
 
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import net.miginfocom.swing.MigLayout;
-import org.nice.lib.Link;
 import org.nice.services.NavService;
 
 import javax.swing.*;

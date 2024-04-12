@@ -1,4 +1,4 @@
-package org.nice.lib;
+package org.nice.components;
 
 import org.nice.services.NavService;
 
