@@ -10,6 +10,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class PokemonService {
     private final static PokemonService instance = new PokemonService();
@@ -23,10 +24,20 @@ public class PokemonService {
         return pokemonList;
     }
 
-    public List<PokemonModel> filterPokemons(List<PokemonType> filter) {
+    public List<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
        return pokemonList
-               .stream().filter(pokemon -> filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name())))
+               .stream().filter(pokemon -> {
+                   var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + "\\w+");
+                   var appearedOnSearch = search
+                           .map(s -> pattern.matcher(pokemon.name().english().toLowerCase()).matches() )
+                           .orElse(true);
+                   return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
+               })
                .toList();
+    }
+
+    public List<PokemonModel> filterPokemons(List<PokemonType> filter) {
+        return filterPokemons(filter, Optional.empty());
     }
 
     private PokemonService() {

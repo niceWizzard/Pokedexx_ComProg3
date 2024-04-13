@@ -26,9 +26,6 @@ public class SearchBar extends JPanel {
 
 
     void onSubmit(String s){
-        if(s.isBlank()) {
-            return;
-        }
-        SearchService.getInstance().setSearchString(s);
+        SearchService.getInstance().setSearchString(s.trim());
     }
 }
