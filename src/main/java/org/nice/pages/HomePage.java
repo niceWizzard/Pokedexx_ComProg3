@@ -6,13 +6,10 @@ import org.nice.components.PokemonCard;
 import org.nice.lib.listview.DynamicListView;
 import org.nice.lib.listview.Item;
 import org.nice.lib.navigation.Routeable;
-import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
 import org.nice.services.PokemonService;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Optional;
 

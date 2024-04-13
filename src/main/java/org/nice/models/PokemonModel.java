@@ -1,7 +1,6 @@
 package org.nice.models;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public record PokemonModel(

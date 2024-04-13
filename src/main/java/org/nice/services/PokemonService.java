@@ -4,14 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
-
-import javax.swing.text.html.Option;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class PokemonService {
