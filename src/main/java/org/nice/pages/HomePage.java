@@ -27,6 +27,7 @@ public class HomePage extends Routeable {
 
         );
         var scroll = new JScrollPane(list);
+        scroll.getVerticalScrollBar().setUnitIncrement(20);
         add(scroll, "grow");
 
     }
