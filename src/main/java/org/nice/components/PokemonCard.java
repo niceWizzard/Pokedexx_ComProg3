@@ -24,6 +24,8 @@ public class PokemonCard extends JPanel {
                         )
                 )
         );
+        // Resize image
+        image = new ImageIcon(image.getImage().getScaledInstance(120,120, Image.SCALE_SMOOTH));
         var imageLabel = new JLabel(image);
         add(imageLabel);
 
