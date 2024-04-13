@@ -6,6 +6,8 @@ import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -33,6 +35,7 @@ public class PokemonService {
 
     private void loadFromFile() {
         var path = getClass().getResource("/pokedex.json").getPath();
+        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
         var file = new File(path);
 
         JSONArray jsonArray = null;
