@@ -33,6 +33,7 @@ public class PokemonService {
                            .orElse(true);
                    return appearedOnSearch && filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name()));
                })
+               .sorted(Comparator.comparingInt(PokemonModel::id))
                .toList();
     }
 
