@@ -9,7 +9,7 @@ import javax.swing.*;
 public class AboutPage extends Routeable {
     public AboutPage(){
         setLayout(new MigLayout("align center center"));
-        add(new JLabel("About Page"));
+        add(new JLabel("About Page, Nigga"));
     }
     @Override
     public void onNavigationEnter(Object... data) {

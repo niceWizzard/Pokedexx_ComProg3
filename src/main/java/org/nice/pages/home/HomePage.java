@@ -17,7 +17,7 @@ public class HomePage extends Routeable {
         setLayout(new MigLayout("", "[][grow]", "grow"));
 
         add(new PokemonListUI(), "width :480:");
-        var rightSide = new JPanel(new MigLayout("wrap, gap 0, insets 0", "grow", "grow"));
+        var rightSide = new JPanel(new MigLayout("wrap, gap 0, insets 0", "grow", "[grow]20[]"));
         rightSide.add(new CurrentPokemonDetails(), "grow");
         rightSide.add(new CurrentPokemonTabs(), "grow");
         add(rightSide, "grow");
