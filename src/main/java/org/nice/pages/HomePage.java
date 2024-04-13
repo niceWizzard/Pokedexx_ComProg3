@@ -26,7 +26,7 @@ public class HomePage extends Routeable {
                 pokemonModel -> String.valueOf(pokemonModel.id()),
                 v -> new Item<>( new PokemonCard(v), Optional.empty()),
                 new Item<>(new JLabel("Nice"), Optional.empty()),
-                new MigLayout("wrap 10, align center", "")
+                new MigLayout("wrap 9, align center", "")
 
         );
         var scroll = new JScrollPane(list);
