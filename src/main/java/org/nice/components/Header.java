@@ -20,12 +20,20 @@ public class Header extends JPanel {
     }
 
     private void init() {
-        add(new JLabel("Pokedexx"), "align left");
+        var leftside = new JPanel(new MigLayout("al left", "[][grow]"));
+
+        add(leftside, "grow");
+        leftside.add(new JLabel("Pokedexx"), "align left");
+        // Search bar
+        leftside.add(new SearchBar(), "grow, align right");
+
         var linkContainer = new JPanel(new MigLayout("align right center, gapx 12"));
         add(linkContainer, "grow");
         var homeLink = new Link("Home", NavService.NAV_HOME);
         var aboutLink = new Link("About", NavService.NAV_ABOUT);
         linkContainer.add(homeLink);
         linkContainer.add(aboutLink);
+
     }
+
 }
