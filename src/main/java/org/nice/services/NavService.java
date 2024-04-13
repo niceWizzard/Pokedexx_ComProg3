@@ -3,7 +3,7 @@ package org.nice.services;
 import org.nice.lib.navigation.NavRoute;
 import org.nice.lib.navigation.NavigationPanel;
 import org.nice.pages.AboutPage;
-import org.nice.pages.HomePage;
+import org.nice.pages.home.HomePage;
 
 public class NavService {
     private static NavigationPanel instance;
