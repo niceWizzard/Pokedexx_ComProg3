@@ -93,6 +93,15 @@ public class DynamicListView<T> extends JPanel {
         init();
     }
 
+    public void clearItems() {
+        for (Component component : getComponents()) {
+            remove(component);
+            items.clear();
+            itemViewMap.clear();
+            add(defaultView.item(), defaultView.addOptions().orElse(""));
+        }
+    }
+
     private void init() {
 
         for(var item : items) {
