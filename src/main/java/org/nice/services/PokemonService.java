@@ -3,17 +3,16 @@ package org.nice.services;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.nice.models.PokemonModel;
+import org.nice.models.PokemonType;
 
+import javax.swing.text.html.Option;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class PokemonService {
     private final static PokemonService instance = new PokemonService();
@@ -25,6 +24,12 @@ public class PokemonService {
 
     public List<PokemonModel> getPokemonList() {
         return pokemonList;
+    }
+
+    public List<PokemonModel> filterPokemons(List<PokemonType> filter) {
+       return pokemonList
+               .stream().filter(pokemon -> filter.stream().allMatch(filterType -> pokemon.type().contains(filterType.name())))
+               .toList();
     }
 
     private PokemonService() {
