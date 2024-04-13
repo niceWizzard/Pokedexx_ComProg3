@@ -27,7 +27,7 @@ public class PokemonService {
     public List<PokemonModel> filterPokemons(List<PokemonType> filter, Optional<String> search) {
        return pokemonList
                .stream().filter(pokemon -> {
-                   var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + "\\w+");
+                   var pattern = Pattern.compile("^"+search.orElseGet(() -> "").toLowerCase() + ".*$");
                    var appearedOnSearch = search
                            .map(s -> pattern.matcher(pokemon.name().english().toLowerCase()).matches() )
                            .orElse(true);
@@ -43,6 +43,7 @@ public class PokemonService {
 
     private PokemonService() {
         loadFromFile();
+        System.out.println("SIZE " + pokemonList.size());
     }
 
     private void loadFromFile() {
