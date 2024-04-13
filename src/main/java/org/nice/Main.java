@@ -1,6 +1,8 @@
 package org.nice;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -24,7 +26,7 @@ public class Main extends JFrame {
 
     public Main() {
         frame = this;
-        FlatDarkLaf.setup();
+        FlatIntelliJLaf.setup();
         var root = new JPanel(new MigLayout("", "grow", "grow"));
         init(root);
 
