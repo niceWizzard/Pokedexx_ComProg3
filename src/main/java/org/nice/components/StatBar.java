@@ -4,14 +4,17 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 
+import com.formdev.flatlaf.ui.FlatRoundBorder;
+
 import java.awt.*;
 
 public class StatBar extends JPanel {
     public StatBar(String statLabel, int statValue, int statMax, Color fillColor){
 
-        setLayout(new MigLayout("gapx 12", "[55]20[grow]", ""));
+        setLayout(new MigLayout("gapx 12", "[55]10[500]", ""));
 
         JPanel statNamePanel = new JPanel();
+        //statNamePanel.setBorder(new FlatRoundBorder());
         statNamePanel.setBackground(fillColor);
 
         JLabel statName = new JLabel();
