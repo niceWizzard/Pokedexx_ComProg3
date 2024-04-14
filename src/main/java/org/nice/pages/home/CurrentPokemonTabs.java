@@ -3,6 +3,8 @@ package org.nice.pages.home;
 import net.miginfocom.swing.MigLayout;
 import org.nice.Utils;
 import org.nice.components.StatBar;
+import org.nice.models.PokemonModel;
+import org.nice.services.PokemonService;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,10 +15,13 @@ import java.util.Objects;
 public class CurrentPokemonTabs extends JPanel{
 
     JPanel description = new JPanel(new MigLayout("align left top"));
-    JPanel evolution = new JPanel(new MigLayout("align center top"));
-    JPanel stats = new JPanel(new MigLayout("align center center"));
+    JPanel evolution = new JPanel(new MigLayout("align center center"));
+    JPanel stats = new JPanel(new MigLayout("align center center, wrap 1", "", ""));
+    int maxStat = 300;
     
-    ImageIcon currentPokemon = new ImageIcon(Utils.getResource("/images/pokedex/hires/002.png"));
+    
+    
+    ImageIcon currentPokemon = new ImageIcon(Utils.getResource("/images/pokedex/thumbnails/00" + 2 + ".png"));
     JLabel evolutionName = new JLabel();
 
     Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -26,10 +31,19 @@ public class CurrentPokemonTabs extends JPanel{
         setBackground(Color.GRAY);
 
         //test values
-        description.add(new JLabel("Lorem ipsum dolor shit chuchu"));
-        stats.add(new JLabel("Lorem ipsum dolor wu"));
-        stats.add(new StatBar("Strength", 20, 100, Color.RED));
 
+        //description
+        description.add(new JLabel("Lorem ipsum dolor shit chuchu"));
+
+        //stat bars
+        stats.add(new StatBar("HP", 100, maxStat, new Color(0xFFDF6D)));
+        stats.add(new StatBar("ATK", 100, maxStat, new Color(0xE46666)));
+        stats.add(new StatBar("DEF", 100, maxStat, new Color(0x7480ED)));
+        stats.add(new StatBar("SP. ATK", 100, maxStat, new Color(0xF2A6A6)));
+        stats.add(new StatBar("SP. DEF", 100, maxStat, new Color(0x7DA6CC)));
+        stats.add(new StatBar("SPD", 100, maxStat, new Color(0x796CC9)));
+
+        //evolution
         evolutionName.setText("Ivysaur");
         evolutionName.setIcon(currentPokemon);
         evolutionName.setHorizontalTextPosition(JLabel.CENTER);
@@ -44,6 +58,6 @@ public class CurrentPokemonTabs extends JPanel{
         tab.setForeground(Color.WHITE);
 
         add(tab, "span, grow");
-        setBorder(border);
+        //setBorder(border);
     }
 }

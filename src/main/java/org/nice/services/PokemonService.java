@@ -75,7 +75,7 @@ public class PokemonService {
     }
 
     private void loadFromFile() {
-        var file = new File(Utils.getResource("/pokedex.json").getPath());
+        var file = new File(Utils.getResource("/pokedex.json"));
 
         JSONArray jsonArray = null;
         try {
