@@ -1,11 +1,13 @@
 package org.nice.pages.home;
 
 import net.miginfocom.swing.MigLayout;
+import org.nice.Utils;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class CurrentPokemonTabs extends JPanel{
 
@@ -13,7 +15,7 @@ public class CurrentPokemonTabs extends JPanel{
     JPanel evolution = new JPanel(new MigLayout("align center top"));
     JPanel stats = new JPanel(new MigLayout("align center center"));
     
-    ImageIcon currentPokemon = new ImageIcon("C:/Users/Brian G/Desktop/Computer_Programming_III/Pokedexx_ComProg3/src/main/resources/images/pokedex/hires/002.png");
+    ImageIcon currentPokemon = new ImageIcon(Utils.getResource("/images/pokedex/hires/002.png"));
     JLabel evolutionName = new JLabel();
 
     Border border = BorderFactory.createLineBorder(Color.BLACK);
