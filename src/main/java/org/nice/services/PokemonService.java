@@ -42,6 +42,15 @@ public class PokemonService {
         return filterPokemons(filter, Optional.empty());
     }
 
+    public Optional<PokemonModel> getPokemon(int id) {
+        for(var p : pokemonList) {
+            if(p.id()== id) {
+                return Optional.of(p);
+            }
+        }
+        return Optional.empty();
+    }
+
     private PokemonService() {
         loadFromFile();
         System.out.println("SIZE " + pokemonList.size());
