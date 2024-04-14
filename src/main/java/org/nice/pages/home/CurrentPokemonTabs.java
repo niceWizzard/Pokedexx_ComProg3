@@ -2,6 +2,7 @@ package org.nice.pages.home;
 
 import net.miginfocom.swing.MigLayout;
 import org.nice.Utils;
+import org.nice.components.StatBar;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -27,6 +28,7 @@ public class CurrentPokemonTabs extends JPanel{
         //test values
         description.add(new JLabel("Lorem ipsum dolor shit chuchu"));
         stats.add(new JLabel("Lorem ipsum dolor wu"));
+        stats.add(new StatBar("Strength", 20, 100, Color.RED));
 
         evolutionName.setText("Ivysaur");
         evolutionName.setIcon(currentPokemon);
