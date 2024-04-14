@@ -5,6 +5,9 @@ import org.json.JSONObject;
 import org.nice.Utils;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
+import rx.Observable;
+import rx.subjects.BehaviorSubject;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -20,6 +23,20 @@ public class PokemonService {
     }
 
     List<PokemonModel> pokemonList = new ArrayList<>();
+
+    private BehaviorSubject<PokemonModel> currentPokemon;
+
+    public Observable<PokemonModel> onCurrentPokemon() {
+        return currentPokemon.asObservable();
+    }
+
+
+    /** Sets the currentPokemon field and fires the change event
+     * @param model The pokemon model to be the current
+     */
+    public void setCurrentPokemon(PokemonModel model) {
+        currentPokemon.onNext(model);
+    }
 
     public List<PokemonModel> getPokemonList() {
         return pokemonList;
@@ -54,6 +71,7 @@ public class PokemonService {
     private PokemonService() {
         loadFromFile();
         System.out.println("SIZE " + pokemonList.size());
+        currentPokemon = BehaviorSubject.create( pokemonList.get(0));
     }
 
     private void loadFromFile() {
