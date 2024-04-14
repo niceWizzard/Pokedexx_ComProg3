@@ -2,6 +2,7 @@ package org.nice.services;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.nice.Utils;
 import org.nice.models.PokemonModel;
 import org.nice.models.PokemonType;
 import java.io.File;
@@ -47,9 +48,7 @@ public class PokemonService {
     }
 
     private void loadFromFile() {
-        var path = getClass().getResource("/pokedex.json").getPath();
-        path = URLDecoder.decode(path, StandardCharsets.UTF_8);
-        var file = new File(path);
+        var file = new File(Utils.getResource("/pokedex.json").getPath());
 
         JSONArray jsonArray = null;
         try {
