@@ -22,7 +22,7 @@ public class PokemonService {
         return instance;
     }
 
-    List<PokemonModel> pokemonList = new ArrayList<>();
+    ArrayList<PokemonModel> pokemonList = new ArrayList<>();
 
     private BehaviorSubject<PokemonModel> currentPokemon;
 
@@ -86,19 +86,18 @@ public class PokemonService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        pokemonList = parseJsonArray(jsonArray);
+        parseJsonArray(jsonArray);
 
     }
 
-    private List<PokemonModel> parseJsonArray(JSONArray jsonArray) {
-        var list = new ArrayList<PokemonModel>();
+    private void parseJsonArray(JSONArray jsonArray) {
+        var list = pokemonList;
 
         for(var item : jsonArray) {
             list.add(
                     parseAsPokemon((JSONObject)item)
             );
         }
-        return list;
     }
 
     private PokemonModel parseAsPokemon(JSONObject item) {
@@ -120,7 +119,8 @@ public class PokemonService {
                 description,
                 evolution,
                 profile,
-                image
+                image,
+                pokemonList
         );
 
         return pokemon;

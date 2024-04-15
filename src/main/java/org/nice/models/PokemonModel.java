@@ -1,5 +1,6 @@
 package org.nice.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +13,8 @@ public record PokemonModel(
         String description,
         Evolution evolution,
         Profile profile,
-        Image image
+        Image image,
+        ArrayList<PokemonModel> list
 ) {
 
 
@@ -24,5 +26,47 @@ public record PokemonModel(
 
     public record Ability(String name, boolean isHidden){}
     public record Image(String sprite, String thumbnail, Optional<String> hires) {}
-    public record EvolutionData(int pokemon, String level){}
+    public record EvolutionData(int id, String level){}
+
+    public record EvolutionNiceData(PokemonModel model, String level) {}
+    public List<EvolutionNiceData> getNextEvolution() {
+        if(evolution.next.isEmpty()) {
+            return List.of();
+        }
+        return this.evolution().next().stream().map(v-> {
+                    Optional<PokemonModel> found = Optional.empty();
+                    for(var i : list) {
+                        if(i.id == v.id) {
+                            found = Optional.of(i);
+                            break;
+                        }
+                    }
+                    return new EvolutionNiceData(
+                            found.get(),
+                            v.level
+                    );
+                }
+        ).toList();
+    }
+
+    public Optional<EvolutionNiceData> getPrevEvolution() {
+        if(evolution.prev.isEmpty()) {
+            return Optional.empty();
+        }
+        return this.evolution().prev.map(v -> {
+            Optional<PokemonModel> found = Optional.empty();
+            for(var i : list) {
+                if(i.id == v.id) {
+                    found = Optional.of(i);
+                    break;
+                }
+            }
+            return new EvolutionNiceData(
+                    found.get(),
+                    v.level
+            );
+        });
+    }
+
+
 }
