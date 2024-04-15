@@ -29,7 +29,7 @@ public class PokemonCard extends JPanel {
         var imageLabel = new JLabel(image);
         add(imageLabel);
 
-        var name = new JLabel(model.name().english());
+        var name = new JLabel(model.name());
         name.setFont(new Font("Arial", Font.BOLD, 16));
         add(name, "align left");
     }

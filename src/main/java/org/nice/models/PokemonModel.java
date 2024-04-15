@@ -23,6 +23,6 @@ public record PokemonModel(
     public record Profile(String height, String weight, Optional<List<String>> egg, List<Ability> ability, String gender) {}
 
     public record Ability(String name, boolean isHidden){}
-    public record Image(String sprite, String thumbnail, String hires) {}
-    public record EvolutionData(PokemonModel pokemon, String level){}
+    public record Image(String sprite, String thumbnail, Optional<String> hires) {}
+    public record EvolutionData(int pokemon, String level){}
 }
