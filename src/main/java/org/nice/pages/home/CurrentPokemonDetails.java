@@ -31,7 +31,7 @@ public class CurrentPokemonDetails extends JPanel {
         if(dummyPokemon.isPresent()){
             PokemonModel fooModel = dummyPokemon.get();
 
-            Name = fooModel.name().english();
+            Name = fooModel.name();
             Species = fooModel.species();
             ID = fooModel.id();
 
@@ -56,7 +56,12 @@ public class CurrentPokemonDetails extends JPanel {
         RoundedCorners PokeStat = new RoundedCorners();
 
         JLabel image = new JLabel();
-        image.setIcon(new ImageIcon(Utils.getResource("/images/pokedex/hires/"+ zeros +ID +".png")));
+        var imageIcon = new ImageIcon(Utils.getResource("/images/pokedex/hires/"+ zeros +ID +".png"));
+        var screenDimension  = Toolkit.getDefaultToolkit().getScreenSize();
+        if(screenDimension.height <= 800) {
+            imageIcon.setImage(imageIcon.getImage().getScaledInstance(200,200, Image.SCALE_SMOOTH));
+        }
+        image.setIcon(imageIcon);
         PokeImage.setPreferredSize(new Dimension(400,400));
         PokeImage.setBackground(new Color(0xE9FFFB));
         PokeImage.setBorder(BorderFactory.createLineBorder(new Color(0xD9D9D9), 15));
@@ -64,7 +69,7 @@ public class CurrentPokemonDetails extends JPanel {
         PokeImage.add((image));
 
         //Basic info
-        PokeBasic.setPreferredSize(new Dimension(280,280));
+//        PokeBasic.setPreferredSize(new Dimension(280,280));
         PokeBasic.setBackground(new Color(0xF6F6F6));
         PokeBasic.setLayout(new MigLayout("","[100%]","[100%]"));
     
@@ -122,7 +127,7 @@ public class CurrentPokemonDetails extends JPanel {
         setLayout(new MigLayout("", "[50%][50%]", "[50%][50%]"));
         add(PokeBasic,"cell 1 0, grow");
         add(PokeStat,"cell 1 1, grow");
-        add(PokeImage,"cell 0 0, span 1 2, grow");
+        add(PokeImage,"cell 0 0, span 1 2,  shrink");
         setPreferredSize(new Dimension(666,586));
         setBackground(new Color(0xF6F6F6)); // 0xF6F6F6
     }
