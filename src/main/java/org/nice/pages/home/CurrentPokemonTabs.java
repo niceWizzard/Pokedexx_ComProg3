@@ -35,7 +35,7 @@ public class CurrentPokemonTabs extends JPanel{
         setBackground(Color.GRAY);
 
         //test values start
-        Optional<PokemonModel> dummyPokemon = pokemonService.getPokemon(25);
+        Optional<PokemonModel> dummyPokemon = pokemonService.getPokemon(1);
         if(dummyPokemon.isPresent()){
             PokemonModel dummyModel = dummyPokemon.get();
 
