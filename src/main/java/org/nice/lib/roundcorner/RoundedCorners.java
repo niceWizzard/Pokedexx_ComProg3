@@ -11,6 +11,13 @@ import javax.swing.JPanel;
 
 public class RoundedCorners extends JPanel {
 
+    public void setAllRound(int corners){
+        setRoundTopLeft(corners);
+        setRoundTopRight(corners);
+        setRoundBottomLeft(corners);
+        setRoundBottomRight(corners);
+    }
+
     public int getRoundTopLeft() {
         return roundTopLeft;
     }
