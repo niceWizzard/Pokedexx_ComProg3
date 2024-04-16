@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import java.awt.*;
+import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -58,7 +59,7 @@ public class CurrentPokemonTabs extends JPanel{
 
         //description
         JLabel description = new JLabel();
-        description.setText(descriptionText);
+        description.setText(MessageFormat.format("<HTML><br/><p>{0}</p></HTML>",descriptionText));
         description.setFont(new Font("Arial", Font.PLAIN, 15));
         descriptionPanel.add(description);
 
