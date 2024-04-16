@@ -31,7 +31,7 @@ public class CurrentPokemonDetails extends JPanel {
         if(dummyPokemon.isPresent()){
             PokemonModel fooModel = dummyPokemon.get();
 
-            Name = fooModel.name().english();
+            Name = fooModel.name();
             Species = fooModel.species();
             ID = fooModel.id();
 
